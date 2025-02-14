@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowers for You, Areeba</title>
+    <style>
+        body {
+            background-color: #ffdde1;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #d63384;
+            margin-top: 50px;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #d63384;
+        }
+    </style>
+    <script>
+        function runTurtle() {
+            fetch('http://localhost:3000/run_turtle')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    document.getElementById("message").innerText = data.message;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById("message").innerText = "Error: Backend is not running!";
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>🌸 Flowers for You, Areeba 🌸</h1>
+    <button onclick="runTurtle()">Click to See the Magic</button>
+    <p id="message"></p> <!-- Message display -->
+</body>
+</html>
